@@ -1,0 +1,13 @@
+{
+  "name": "indecision_app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jchuynh/andrew_mead_react_course",
+  "author": "Jessica Huynh",
+  "license": "MIT",
+  "dependencies": {
+    "babel-env": "^1.5.1",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "6.24.1"
+  }
+}
