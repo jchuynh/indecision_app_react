@@ -3,18 +3,28 @@
 console.log('App.js is running!');
 
 // JSX - JavaScript XML (language extension)
+var app = {
+  title: 'Indecision App',
+  subtitle: 'Put your life in the hands of a computer',
+  options: ['one', 'two']
+};
 var template = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    'Indecision App'
+    app.title
+  ),
+  app.subtitle && React.createElement(
+    'p',
+    null,
+    app.subtitle
   ),
   React.createElement(
     'p',
     null,
-    'This is some info'
+    app.options.length > 0 ? 'Here are your options' : 'No Options'
   ),
   React.createElement(
     'ol',
@@ -32,28 +42,43 @@ var template = React.createElement(
   )
 );
 
+var user = {
+  name: 'Jessica',
+  age: 28,
+  location: 'San Jose, CA'
+};
+function getLocation(location) {
+  if (location) {
+    return React.createElement(
+      'p',
+      null,
+      'Location: ',
+      location
+    );
+  } else {
+    return undefined;
+  }
+}
+
 var templateTwo = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    'Jessica Huynh'
+    user.name ? user.name : 'Anonymous'
   ),
-  React.createElement(
+  user.age && user.age >= 18 && React.createElement(
     'p',
     null,
-    'Age: 28'
+    'Age: ',
+    user.age
   ),
-  React.createElement(
-    'p',
-    null,
-    'Location: San Jose, CA'
-  )
+  getLocation(user.location)
 );
 
-// Code runnign behind the scene
+// Code running behind the scene
 // var template = /*#__PURE__*/React.createElement("p", null, "This is JSX from app,js");
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);

@@ -1,10 +1,16 @@
 console.log('App.js is running!');
 
 // JSX - JavaScript XML (language extension)
+var app = {
+  title: 'Indecision App',
+  subtitle: 'Put your life in the hands of a computer',
+  options: ['one', 'two']
+};
 var template = (
   <div>
-    <h1>Indecision App</h1>
-    <p>This is some info</p>
+    <h1>{app.title}</h1>
+    {app.subtitle && <p>{app.subtitle}</p>}
+    <p>{app.options.length > 0 ? 'Here are your options' : 'No Options'}</p>
     <ol>
       <li>Item One</li>
       <li>Item Two</li>
@@ -12,16 +18,29 @@ var template = (
   </div>
 );
 
+var user = {
+  name: 'Jessica',
+  age: 28,
+  location: 'San Jose, CA',
+};
+function getLocation(location){
+  if (location) {
+    return <p>Location: {location}</p>;
+  } else {
+    return undefined;
+  }
+}
+
 var templateTwo = (
   <div>
-    <h1>Jessica Huynh</h1>
-    <p>Age: 28</p>
-    <p>Location: San Jose, CA</p> 
+    <h1>{user.name ? user.name : 'Anonymous'}</h1>
+    {user.age && user.age >= 18 && <p>Age: {user.age}</p>}
+    {getLocation(user.location)}
   </div>
 );
 
-    // Code runnign behind the scene
+    // Code running behind the scene
     // var template = /*#__PURE__*/React.createElement("p", null, "This is JSX from app,js");
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
