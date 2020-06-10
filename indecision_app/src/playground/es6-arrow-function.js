@@ -1,10 +1,9 @@
-'use strict';
-
 // const square = function (x) {
 //   return x * x;
 // };
 
 // console.log(square(3));
+
 
 
 // using arrow functions
@@ -23,15 +22,13 @@
 
 // ChHALLENGE
 // verbose method
-var getFirstName = function getFirstName(fullName) {
+const getFirstName = function (fullName) {
 	return fullName.split(' ')[0];
 };
 
 console.log(getFirstName('Mike Smith'));
 
 // arrow function method
-var getFirstName2 = function getFirstName2(fullname) {
-	return fullname.split(' ')[0];
-};
+const getFirstName2 = (fullname) => fullname.split(' ')[0];
 
 console.log(getFirstName2('Jessica Huynh'));
