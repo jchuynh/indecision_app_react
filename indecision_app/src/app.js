@@ -20,7 +20,7 @@ const template = (
 
 const user = {
   name: 'Jessica',
-  age: 28,
+  age: 28, 
   location: 'San Jose, CA',
 };
 function getLocation(location){

@@ -1,37 +1,84 @@
 'use strict';
 
-// const square = function (x) {
-//   return x * x;
-// };
+console.log('App.js is running!');
 
-// console.log(square(3));
-
-
-// using arrow functions
-// the are always anoymous
-// only returns a single expression
-
-// const squareArrow = (x) => {
-// 	return  x * x; // returns an experssion
-// };
-
-// do not use return anywhere 
-// cannot use function calls or promises
-// const squareArrow = (x) => x * x;
-
-// console.log(squareArrow(9));
-
-// ChHALLENGE
-// verbose method
-var getFirstName = function getFirstName(fullName) {
-	return fullName.split(' ')[0];
+// JSX - JavaScript XML (language extension)
+var app = {
+  title: 'Indecision App',
+  subtitle: 'Put your life in the hands of a computer',
+  options: ['one', 'two']
 };
+var template = React.createElement(
+  'div',
+  null,
+  React.createElement(
+    'h1',
+    null,
+    app.title
+  ),
+  app.subtitle && React.createElement(
+    'p',
+    null,
+    app.subtitle
+  ),
+  React.createElement(
+    'p',
+    null,
+    app.options.length > 0 ? 'Here are your options' : 'No Options'
+  ),
+  React.createElement(
+    'ol',
+    null,
+    React.createElement(
+      'li',
+      null,
+      'Item One'
+    ),
+    React.createElement(
+      'li',
+      null,
+      'Item Two'
+    )
+  )
+);
 
-console.log(getFirstName('Mike Smith'));
-
-// arrow function method
-var getFirstName2 = function getFirstName2(fullname) {
-	return fullname.split(' ')[0];
+var user = {
+  name: 'Jessica',
+  age: 28,
+  location: 'San Jose, CA'
 };
+function getLocation(location) {
+  if (location) {
+    return React.createElement(
+      'p',
+      null,
+      'Location: ',
+      location
+    );
+  } else {
+    return undefined;
+  }
+}
 
-console.log(getFirstName2('Jessica Huynh'));
+var templateTwo = React.createElement(
+  'div',
+  null,
+  React.createElement(
+    'h1',
+    null,
+    user.name ? user.name : 'Anonymous'
+  ),
+  user.age && user.age >= 18 && React.createElement(
+    'p',
+    null,
+    'Age: ',
+    user.age
+  ),
+  getLocation(user.location)
+);
+
+// Code running behind the scene
+// var template = /*#__PURE__*/React.createElement("p", null, "This is JSX from app,js");
+var appRoot = document.getElementById('app');
+
+ReactDOM.render(template, appRoot);
