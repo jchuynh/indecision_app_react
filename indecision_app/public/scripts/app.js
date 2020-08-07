@@ -42,43 +42,52 @@ var template = React.createElement(
   )
 );
 
-var user = {
-  name: 'Jessica',
-  age: 28,
-  location: 'San Jose, CA'
+var count = 0;
+var addOne = function addOne() {
+  console.log('addOne');
 };
-function getLocation(location) {
-  if (location) {
-    return React.createElement(
-      'p',
-      null,
-      'Location: ',
-      location
-    );
-  } else {
-    return undefined;
-  }
-}
 
-var templateTwo = React.createElement(
+var minusOne = function minusOne() {
+  console.log('minusOne');
+};
+
+var reset = function reset() {
+  console.log('reset');
+};
+
+var templateTwo =
+// templateTwo creates an object
+React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    user.name ? user.name : 'Anonymous'
+    'Count: ',
+    count
   ),
-  user.age && user.age >= 18 && React.createElement(
-    'p',
-    null,
-    'Age: ',
-    user.age
+  React.createElement(
+    'button',
+    { onClick: addOne, className: 'button' },
+    '+1'
   ),
-  getLocation(user.location)
+  React.createElement(
+    'button',
+    { onClick: minusOne, className: 'button' },
+    '-1'
+  ),
+  React.createElement(
+    'button',
+    { onClick: reset, className: 'button' },
+    'reset'
+  )
 );
 
+// Challenge
+// Make button "-1" - setup minusOne function and register - log "minusOne"
+// Make reset button "reset" - setup reset function - log "reset"
 // Code running behind the scene
 // var template = /*#__PURE__*/React.createElement("p", null, "This is JSX from app,js");
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);
