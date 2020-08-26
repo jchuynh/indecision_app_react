@@ -19,9 +19,56 @@ class Person {
     }
 }
 
-// new is a keyword
-const me = new Person('Jessica Huynh', 28);
-console.log(me.getDescription());
+// Creating subclass of person
+class Student extends Person {
+    // Extend person to student and override some things
+    constructor(name, age, major) {
+        // You don't need to reset the defaults from person
+        super(name, age); // calling the correct parent
+        this.major = major;
+    }
+    hasMajor() {
+        // return True is this.major exists
+        return !!this.major;
+    }
+    getDescription() {
+        // calling the parent getDescription method
+        // using super again
+        let description = super.getDescription();
 
-const other = new Person();
-console.log(other.getDescription());
+        // check if the student hasMajor is True
+        if (this.hasMajor()) {
+            description += ` Their major is ${this.major}.`;
+        }
+
+        return description;
+    }
+}   
+
+class Traveler extends Person {
+    constructor(name, age, homeLocation) {
+        super(name, age);
+        this.homeLocation = homeLocation;
+    }
+
+    // checl to see if the home location exists
+    hasHomeLocation() {
+        return !!this.homeLocation;
+    }
+
+    getGreeting() {
+        let greeting = super.getGreeting();
+
+        if (this.hasHomeLocation()) {
+            greeting += ` I'm visiting from ${this.homeLocation}.`;
+        }
+        return greeting;
+    }
+}
+
+// new is a keyword
+const me = new Traveler('Jessica Huynh', 28, 'San Jose, CA');
+console.log(me.getGreeting());
+
+const other = new Traveler();
+console.log(other.getGreeting());
