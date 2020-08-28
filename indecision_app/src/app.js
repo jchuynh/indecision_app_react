@@ -45,7 +45,6 @@ class Options extends React.Component {
       <div>
         <p>{this.props.options}</p>
         <p>{this.props.options.length}</p>
-        <Option />
       </div>
     );
   }
