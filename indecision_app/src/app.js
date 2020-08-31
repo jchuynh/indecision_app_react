@@ -39,12 +39,16 @@ class Action extends React.Component {
   }
 }
 
+
+
 class Options extends React.Component {
   render() {
     return (
       <div>
-        <p>{this.props.options}</p>
-        <p>{this.props.options.length}</p>
+        {
+          this.props.options.map((option) =>
+          <Option key={option} optionText={option} />) 
+        }
       </div>
     );
   }
@@ -54,7 +58,7 @@ class Option extends React.Component {
   render() {
     return (
       <div>
-        <p>This is the singular option</p>
+        {this.props.optionText}
       </div>
     );
   }
